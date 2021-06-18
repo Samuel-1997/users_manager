@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Form from './Form';
+import DataCenter from './DataCenter';
+import Users from './Users'
+import Nav from './Nav';
+import Posts from './components/Posts';
+import FormPosts from './components/FormPosts';
+import {BrowserRouter as Router , Route , Switch} from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DataCenter>
+        <Router>
+          <Nav />
+        <Switch>
+            <Route exact path='/users' component={Users} />
+            <Route exact path='/form' component={Form} />
+            <Route exact path='/posts' component={Posts} />
+            <Route exact path='/formposts' component={FormPosts} />
+        </Switch>
+        </Router>
+      </DataCenter>
     </div>
   );
 }
